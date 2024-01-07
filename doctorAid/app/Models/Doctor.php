@@ -14,5 +14,6 @@ class Doctor extends Model
         'long_desc',
         'phone_number',
         'image',
+        'specialty',
     ];
 }
