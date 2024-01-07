@@ -1,0 +1,21 @@
+.item:hover {
+    background-color: #afcfff;
+    font-size: large;
+}
+
+.menu{
+    color: black;
+}
+
+.item:hover .menu{
+    color: white;
+    font-weight: bolder; 
+}
+
+.background{
+    background-color: blue;
+    background-image: url("../assets/banner.png");
+    background-size: cover;
+    height: 300px;
+    
+}
