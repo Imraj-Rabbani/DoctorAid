@@ -31,6 +31,8 @@
                             <p class="card-text">Phone Number: {{ $doctor->phone_number }}</p>
                             <a href="{{route('editinfo',$doctor->id)}}" class="btn btn-primary mx-2">Edit</a>
                             <a href="{{route('deleteinfo',$doctor->id)}}" class="btn btn-danger mx-2">Delete</a>
+                            <a href="{{route('addschedules',$doctor->id)}}" class="btn btn-success  m-2">Add Schedule</a>
+
                         </div>
 
                     </div>

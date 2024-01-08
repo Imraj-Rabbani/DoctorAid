@@ -28,9 +28,12 @@
                     <div class="item rounded mt-4 py-2">
                         <a href="{{ route('adddoctor') }}" class="text-decoration-none fw-light menu">Add Doctor</a>
                     </div>
+                    <div class="item rounded mt-4 py-2">
+                        <a href="{{ route('allschedules') }}" class="text-decoration-none fw-light menu">All Schedules</a>
+                    </div>
                 </div>
             </div>
-            <div class="col-10 text-center" style="background-color: #F0F8FF; margin-left:20%;">
+            <div class="col-10 text-center" style="background-color: #F0F8FF; margin-left:20%; width:80%">
                 <input type="text" name="" id="" placeholder="Search..."
                     class="mt-4 px-4 col-10 fw-light border bg-light rounded shadow-lg" style="height: 50px">
                 @yield('content')

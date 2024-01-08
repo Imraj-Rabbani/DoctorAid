@@ -76,11 +76,52 @@ class AdminController extends Controller
 
     }
 
-    public function deleteDoctor($id){
+    public function deleteDoctor($id)
+    {
         DB::table('doctors')
             ->where('id', $id)
             ->delete();
-    
-    return redirect()->route('admindashboard')->with("deletemessage", "Doctor's Information Deleted Successfully!");
+
+        return redirect()->route('admindashboard')->with("deletemessage", "Doctor's Information Deleted Successfully!");
+    }
+
+    public function schedules()
+    {
+        $all_schedules = DB::table('doc_schedules')->get();
+        return view('admin.doc_schedules', ['all_schedules' => $all_schedules]);
+    }
+
+    public function allSchedules()
+    {
+        $doctors = DB::table('doctors')->get();
+        return view('admin.all_schedules', ['doctors' => $doctors]);
+    }
+
+    public function addSchedules($id)
+    {
+        $doc_name = DB::table('doctors')->where('id',$id)->value('name');
+        return view('admin.addschedule', ['id' => $id, 'doc_name' => $doc_name ]);
+    }
+
+    public function insertSchedule(Request $request)
+    {
+        DB::table('doc_schedules')->insert([
+            'doc_id' => $request->id,
+            'day' => $request->day,
+            'time' => $request->time,
+            'fees' => $request->fees,
+        ]);
+        return redirect()->route('allschedules')->with("message", "Doctor's Schedule Added Successfully!");
+    }
+
+    public function deleteSchedule($id)
+    {
+        DB::table('doc_schedules')
+            ->where('doc_id', $id)
+            ->delete();
+
+
+        return redirect()->route('allschedules')->with("message", "Doctor's Schedule deleted Successfully!");
+        
     }
 }
