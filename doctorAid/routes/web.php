@@ -33,8 +33,12 @@ Route::controller(AdminController::class)->group(function(){
 
 
 Route::controller(UserController::class)->group(function(){
+    Route::get('/register','register')->name('register');
+    Route::post('/register','registerUser')->name('register');
+    Route::get('/login','login')->name('login');
     Route::get('/homepage','homepage')->name('homepage');
     Route::get('/doc-profile/{id}','docProfile')->name('docprofile');
     Route::get('/specialty-wise/{specialty}','specialtyWise')->name('specialty');
+    Route::get('/book-appointment/{id}','bookAppointment')->name('bookappointment');
 
 });
