@@ -8,16 +8,12 @@
 
 
 
-const selectElement = document.getElementById('redirect');
-
-        // Add a change event listener
-        selectElement.addEventListener('change', function() {
-            // Get the selected option's value
-            const selectedOptionValue = this.value;
-
-            // Check if a valid option is selected
-            if (selectedOptionValue) {
-                // Redirect to the selected URL
-                window.location.href = selectedOptionValue;
-            }
-        });
+const selectElement = document.getElementById('redirect-specialty');
+if (selectElement) {
+    selectElement.addEventListener('change', function() {
+        const selectedOptionValue = this.value;
+        if (selectedOptionValue) {
+            window.location.href = selectedOptionValue;
+        }
+    });
+}

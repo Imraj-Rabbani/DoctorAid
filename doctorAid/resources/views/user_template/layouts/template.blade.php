@@ -43,10 +43,16 @@
                         <li class="nav-item"><a class="nav-link active" href="{{ route('register') }}">Register</a></li>
                     @endif
 
+
                 </ul>
             </div>
         </div>
     </nav>
+    @if (session()->has('message'))
+        <div class="alert alert-success mt-4">
+            {{ session()->get('message') }}
+        </div>
+    @endif
     <!-- Header-->
     @yield('content')
     <!-- Footer-->

@@ -4,6 +4,8 @@
 @endsection
 
 @section('content')
+{{-- @dump($doc_info)
+@dd($doc_reviews) --}}
     <div class="container w-75">
         <div class="row">
             <div class="card col-3  m-4 shadow">
@@ -18,6 +20,7 @@
                 <div class="fs-4 mb-4">{{$doc_info->long_desc}}</div>
             </div>
         </div>
+        
 
         <table class="table table-striped table-hover table-bordered text-center mt-4 rounded">
             <tr>
@@ -35,7 +38,15 @@
                     <td>{{ $schedule->seat_left }}</td>
                     <td>{{ $schedule->fees }}</td>
                     <td>
-                        <a href="{{ route('bookappointment', $doc_info->id) }}" class="btn btn-primary">Book Now</a>
+                        <a href="{{ route('bookappointment', $doc_info->id) }}" class="btn btn-primary"
+                            onclick="event.preventDefault();
+                                    document.getElementById('form-submit').submit();"
+                            >Book Now</a>
+
+                            <form action="{{route('bookappointment')}}" id="form-submit" method="POST" style="display: none;">
+                            @csrf
+                            <input type="hidden"  name="id" value="{{$schedule->id}}">
+                            </form>
                     </td>
                 </tr>
             @endforeach
@@ -43,9 +54,36 @@
 
         </table>
 
-        <div>
-            <h2>Reviews</h2>
+        <div class="d-flex flex-column ">
+            <h2 class="mt-4 text-decoration-underline">Your Feedback</h2>
+            <form action="{{route('submitreview')}}"  method="POST" id="review-submit" class="my-4">
+                @csrf
+                <div class="form-floating">
+                    <input type="hidden" name="doc_id" value="{{$doc_info->id}}">
+                    <textarea class="form-control" name="feedback" id="floatingTextarea"></textarea>
+                    <label for="floatingTextarea" >Write your personal experience</label>
+                  </div>
+            </form>
+            <div class="d-flex flex-row-reverse mx-4">
+                <a href="{{route('submitreview')}}" class="btn btn-primary" style="width: 10%"
+                onclick="event.preventDefault();
+                        document.getElementById('review-submit').submit();"
+                >Submit</a>
+            </div>
+            
         </div>
+        <h2 class="mt-4 text-decoration-underline">Reviews</h2>
+        @foreach ($doc_reviews as $review)
+        <div class="mt-4">
+            <h4>
+                {{$review->name}}
+                <small class="text-body-secondary">said: </small>
+              </h3>
+            <p class="fs-5">{{$review->feedback}}</p>
+            <hr>
+        </div>
+        @endforeach
 
+        
     </div>
 @endsection

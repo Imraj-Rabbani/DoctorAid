@@ -18,7 +18,7 @@
     <div class="container-fluid">
         <div class="row justify-content-end mr-2">
             <div class="row justify-content-end mr-4 mb-2">Search By specialty</div>
-            <select class="form-select shadow" id="redirect" style="width: 20%">
+            <select class="form-select shadow" id="redirect-specialty" style="width: 20%">
                 
                 <option selected>{{ $specialty }}</option>
 

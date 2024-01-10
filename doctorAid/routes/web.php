@@ -48,7 +48,8 @@ Route::controller(UserController::class)->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::controller(UserController::class)->group(function () {
-        Route::get('/book-appointment/{id}', 'bookAppointment')->name('bookappointment');
+        Route::post('/book-appointment', 'bookAppointment')->name('bookappointment');
+        Route::post('/submit-review', 'reviewSubmission')->name('submitreview');
     });
 });
 
