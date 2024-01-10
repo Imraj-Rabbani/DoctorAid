@@ -85,11 +85,7 @@ class AdminController extends Controller
         return redirect()->route('admindashboard')->with("deletemessage", "Doctor's Information Deleted Successfully!");
     }
 
-    public function schedules()
-    {
-        $all_schedules = DB::table('doc_schedules')->get();
-        return view('admin.doc_schedules', ['all_schedules' => $all_schedules]);
-    }
+    
 
     public function allSchedules()
     {

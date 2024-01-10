@@ -10,15 +10,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Route::middleware('auth')->group(function () {
+//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+// });
 
 Route::middleware(['checkRole'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
@@ -28,7 +28,6 @@ Route::middleware(['checkRole'])->group(function () {
         Route::get('/admin/edit-info/{id}', 'editInfo')->name('editinfo');
         Route::post('/admin/update-info', 'updateDoctor')->name('updateinfo');
         Route::get('/admin/delete-info/{id}', 'deleteDoctor')->name('deleteinfo');
-        Route::get('/admin/schedules', 'schedules')->name('schedules');
         Route::get('/admin/allschedules', 'allSchedules')->name('allschedules');
         Route::get('/admin/add-schedules/{id}', 'addSchedules')->name('addschedules');
         Route::post('/admin/insert-schedule', 'insertSchedule')->name('insertschedule');
@@ -48,8 +47,10 @@ Route::controller(UserController::class)->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::controller(UserController::class)->group(function () {
+        Route::get('/profile', 'profile')->name('profile');
         Route::post('/book-appointment', 'bookAppointment')->name('bookappointment');
         Route::post('/submit-review', 'reviewSubmission')->name('submitreview');
+        Route::post('/cancel-appointment', 'cancelAppointment')->name('cancelappointment');
     });
 });
 

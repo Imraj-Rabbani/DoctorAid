@@ -45,3 +45,24 @@
     padding-right: 9rem;
 }
 
+.menu{
+
+    display: none;
+}
+
+.without-menu{
+    /* border: 2px solid black; */
+    overflow-x: hidden;
+    transition: 0.3s;
+    width: 220px;
+    height: 100vh;
+    padding: 20px;
+    position: fixed;
+    z-index: 2;
+    list-style-type: none;
+}
+
+.change{
+    margin-left: 180px;
+}
+

@@ -4,8 +4,6 @@
 @endsection
 
 @section('content')
-{{-- @dump($doc_info)
-@dd($doc_reviews) --}}
     <div class="container w-75">
         <div class="row">
             <div class="card col-3  m-4 shadow">

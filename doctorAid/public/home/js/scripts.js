@@ -17,3 +17,17 @@ if (selectElement) {
         }
     });
 }
+
+
+const toggleIcon = document.getElementById('toggle_icon');
+const selectMenu = document.getElementById('menu-bar');
+const selectNav = document.getElementById('nav-container');
+
+if(selectMenu && selectNav){
+
+    toggleIcon.addEventListener('click', function () {
+        selectMenu.classList.toggle('menu');
+        selectMenu.classList.toggle('without-menu');
+        selectNav.classList.toggle('change')
+    })
+}
