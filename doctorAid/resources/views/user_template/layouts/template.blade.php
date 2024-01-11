@@ -14,7 +14,7 @@
 
 <body>
     <!-- Responsive navbar-->
-    <div class="menu items-center  bg-white shadow text-center"  id="menu-bar">
+    <div class="menus items-center  bg-white shadow text-center"  id="menu-bar">
         <div>All Routes</div>
         <ul class="list-group ">
             <div class="my-4 fw-bold">Can be accessed by User</div>

@@ -41,6 +41,9 @@ class UserController extends Controller
     }
     public function docProfile($id)
     {
+        $user_id = Auth::id();
+        $user_schedule = DB::table('appointments')->where('user_id',$user_id)->pluck('schedule_id');
+        // dd($user_schedule);
         $doc_info = DB::table('doctors')->find($id);
         $doc_schedules = DB::table('doc_schedules')->where('doc_id', $id)->get();
         $doc_reviews = DB::table('reviews')
@@ -51,7 +54,7 @@ class UserController extends Controller
 
         return view(
             'user_template.doc_profile',
-            ['doc_info' => $doc_info, 'doc_schedules' => $doc_schedules, 'doc_reviews' => $doc_reviews]
+            ['doc_info' => $doc_info, 'doc_schedules' => $doc_schedules, 'doc_reviews' => $doc_reviews, 'user_schedule' => $user_schedule]
         );
 
     }
@@ -71,7 +74,6 @@ class UserController extends Controller
         DB::table('appointments')->insert([
             'user_id' => $user_id,
             'schedule_id' => $request->id,
-
         ]);
 
         DB::table('doc_schedules')

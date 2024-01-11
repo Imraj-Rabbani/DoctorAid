@@ -21,15 +21,16 @@
                     <a class="fs-3 text-decoration-none" href="{{ route('homepage') }}">Doctor<span
                             class="fw-bold">Aid</span></a>
                 </div>
+                <div class="text-start fw-light pt-4 mx-4"> -- Menu</div>
                 <div class="container">
                     <div class="item rounded mt-4 py-2">
-                        <a href="{{ route('admindashboard') }}" class="text-decoration-none fw-light menu">Dashboard</a>
+                        <a href="{{ route('admindashboard') }}" class="text-decoration-none fw-semibold menu">Dashboard</a>
                     </div>
                     <div class="item rounded mt-4 py-2">
-                        <a href="{{ route('adddoctor') }}" class="text-decoration-none fw-light menu">Add Doctor</a>
+                        <a href="{{ route('adddoctor') }}" class="text-decoration-none fw-semibold menu">Add Doctor</a>
                     </div>
                     <div class="item rounded mt-4 py-2">
-                        <a href="{{ route('allschedules') }}" class="text-decoration-none fw-light menu">All Schedules</a>
+                        <a href="{{ route('allschedules') }}" class="text-decoration-none fw-semibold menu">All Schedules</a>
                     </div>
                 </div>
             </div>
