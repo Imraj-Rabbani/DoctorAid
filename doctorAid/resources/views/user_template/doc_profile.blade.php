@@ -31,12 +31,11 @@
             @php
                 $num = 0;
             @endphp
-{{-- $user_schedule === $schedule->id --}}
             @foreach ($doc_schedules as $schedule)
                 @php
                     $num++;
                 @endphp
-                @if (in_array($schedule->id,$user_schedule->toArray()))
+                @if (in_array($schedule->id, $user_schedule->toArray()))
                     <tr>
                         <td style="background-color: rgb(175,214,155)">{{ $schedule->day }}</td>
                         <td style="background-color: rgb(175,214,155)">{{ $schedule->time }} pm</td>
@@ -44,12 +43,6 @@
                         <td style="background-color: rgb(175,214,155)">{{ $schedule->fees }}</td>
                         <td style="background-color: rgb(175,214,155)">
                             <button class="btn btn-primary" disabled>Already Booked</button>
-
-                            {{-- <form action="{{ route('bookappointment') }}" id="form-submit" method="POST"
-                                style="display: none;">
-                                @csrf
-                                <input type="hiddenu" name="id" value="{{ $schedule->id }}">
-                            </form> --}}
                         </td>
                     </tr>
                 @else
@@ -65,11 +58,9 @@
                                 Now</a>
 
                             <form action="{{ route('bookappointment') }}" id="form-submit-{{ $num }}"
-                                method="POST"
-                                style="display: none">
+                                method="POST" style="display: none">
                                 @csrf
-                                <input type="hidden"
-                                name="id" value="{{ $schedule->id }}">
+                                <input type="hidden" name="id" value="{{ $schedule->id }}">
                             </form>
                         </td>
                     </tr>

@@ -1,6 +1,6 @@
 @extends('user_template.layouts.template')
 @section('title')
-    Doctor's Profile
+    User Profile
 @endsection
 
 @section('content')
@@ -49,9 +49,6 @@
                         <p class="fs-5">{{ $review->feedback }}</p>
                         <hr>
                 </div>
-        @endforeach
-    </div>
-
-
-    </div>
-@endsection
+            @endforeach
+        </div>
+    @endsection

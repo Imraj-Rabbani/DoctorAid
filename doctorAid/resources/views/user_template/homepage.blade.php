@@ -13,46 +13,40 @@
             </div>
         </div>
     </header>
-    <!-- Page Content-->
     <div class="container-fluid text-center fw-bold fs-3">Book appointments with ease. Anytime, anywhere.</div>
     <div class="container-fluid">
         <div class="row justify-content-end mr-2">
             <div class="row justify-content-end mr-4 mb-2">Search By specialty</div>
 
-        <select class="form-select shadow" id="redirect-specialty" style="width: 20%">
-            <option  selected>All</option>
-            @php
+            <select class="form-select shadow" id="redirect-specialty" style="width: 20%">
+                <option selected>All</option>
+                @php
                     $specialities = ['Cardiologist', 'Neurologist', 'Oncologist', 'Pediatrician', 'Dermatologist'];
                 @endphp
 
                 @foreach ($specialities as $specialist)
                     <option value="{{ route('specialty', $specialist) }}">{{ $specialist }}</option>
                 @endforeach
-          </select>
+            </select>
         </div>
     </div>
     <section class="pt-4 ">
         <div class="container-fluid row pl-8 ">
+            @foreach ($doctors as $doctor)
+                <div class="card col-3  m-4">
+                    <img src="{{ asset($doctor->image) }}" style="width: 100%; height:auto; padding:0" class="card-img-top"
+                        alt="...">
 
-
-                @foreach ($doctors as $doctor)
-                    <div class="card col-3  m-4">
-                        <img src="{{ asset($doctor->image) }}" style="width: 100%; height:auto; padding:0" class="card-img-top" alt="...">
-
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $doctor->name }}</h5>
-                            <h6 class="card-subtitle mb-2 text-body-secondary">{{ $doctor->specialty }}</h6>
-                            <p class="card-text">{{ $doctor->long_desc }}</p>
-                            <a href="{{route('docprofile',$doctor->id)}}" class="btn btn-primary mt-2">See More</a>
-
-                        </div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $doctor->name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">{{ $doctor->specialty }}</h6>
+                        <p class="card-text">{{ $doctor->long_desc }}</p>
+                        <a href="{{ route('docprofile', $doctor->id) }}" class="btn btn-primary mt-2">See More</a>
 
                     </div>
-                @endforeach
 
-
+                </div>
+            @endforeach
         </div>
-
-
     </section>
 @endsection

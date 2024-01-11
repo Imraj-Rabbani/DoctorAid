@@ -6,19 +6,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
+
 
 Route::middleware(['checkRole'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
@@ -39,7 +29,7 @@ Route::middleware(['checkRole'])->group(function () {
 
 
 Route::controller(UserController::class)->group(function () {
-    Route::get('/homepage', 'homepage')->name('homepage');
+    Route::get('/', 'homepage')->name('homepage');
     Route::get('/doc-profile/{id}', 'docProfile')->name('docprofile');
     Route::get('/specialty-wise/{specialty}', 'specialtyWise')->name('specialty');
 

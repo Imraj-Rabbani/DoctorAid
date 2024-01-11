@@ -7,7 +7,6 @@ use Illuminate\Database\Query\JoinClause;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Database\Query\Builder;
 
 class UserController extends Controller
 {
@@ -19,6 +18,9 @@ class UserController extends Controller
 
     public function profile()
     {
+
+        // ====Fetching appointment_id, Schedule Information and Doctors name using Advanced joinclause ==== //
+        // ====Using the select method so that appointment_id is given priority if there is a clash ==== //
         $user_appointments = DB::table('appointments')
         ->select('appointments.id as appointment_id','doc_schedules.*','doctors.name')
             ->join('doc_schedules', function (JoinClause $join) {
@@ -41,9 +43,11 @@ class UserController extends Controller
     }
     public function docProfile($id)
     {
+        // ====Fetching all the schedules of the logged in user, so that the booked appointment can be highlighted later==== //
         $user_id = Auth::id();
         $user_schedule = DB::table('appointments')->where('user_id',$user_id)->pluck('schedule_id');
-        // dd($user_schedule);
+
+
         $doc_info = DB::table('doctors')->find($id);
         $doc_schedules = DB::table('doc_schedules')->where('doc_id', $id)->get();
         $doc_reviews = DB::table('reviews')
@@ -89,14 +93,16 @@ class UserController extends Controller
         
         DB::table('doc_schedules')->where('id', $schedule_id)->increment('seat_left', 1);
 
+        // ==== Always do the logic first if any, then delete ==== //
+
         DB::table('appointments')->where('id', $request->id)->delete();
+
         return redirect()->route('homepage')->with('message', 'Your Appointment has been cancelled');
-
-
     }
 
     public function reviewSubmission(Request $request)
     {
+        // ==== Validate the feedback given by the user==== //
         $request->validate([
             'feedback' => "required|string|max:255"
         ]);
@@ -107,7 +113,5 @@ class UserController extends Controller
             'feedback' => $request->feedback,
         ]);
         return redirect()->route('homepage')->with('message', 'Your Feedback has been submitted to us');
-
-
     }
 }

@@ -19,7 +19,7 @@
         <div class="row justify-content-end mr-2">
             <div class="row justify-content-end mr-4 mb-2">Search By specialty</div>
             <select class="form-select shadow" id="redirect-specialty" style="width: 20%">
-                
+
                 <option selected>{{ $specialty }}</option>
 
                 @php
@@ -49,15 +49,9 @@
                         <h6 class="card-subtitle mb-2 text-body-secondary">{{ $doctor->specialty }}</h6>
                         <p class="card-text">{{ $doctor->long_desc }}</p>
                         <a href="{{ route('docprofile', $doctor->id) }}" class="btn btn-primary mt-2">See More</a>
-
                     </div>
-
                 </div>
             @endforeach
-
-
         </div>
-
-
     </section>
 @endsection

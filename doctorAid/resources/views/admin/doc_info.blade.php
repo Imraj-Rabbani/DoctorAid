@@ -1,6 +1,6 @@
 @extends('admin.layouts.template')
 @section('title')
-Add Doctor
+Doctor Information
 @endsection
 
 @section('content')

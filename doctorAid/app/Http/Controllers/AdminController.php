@@ -16,7 +16,6 @@ $GLOBALS['specialties'] =
     ];
 class AdminController extends Controller
 {
-
     public function dashboard()
     {
         $doctors = DB::table('doctors')->get();
@@ -31,15 +30,12 @@ class AdminController extends Controller
 
     public function saveDoctor(Request $request)
     {
-
-        // fetching the image from the form, creating a unique id for the image
-        // then moving it to the upload folder, where it will be stored
+        // ==== Fetch the image from the form, create a unique id for the image then move it to the upload folder, where it will be stored==== //
         $image = $request->file('image');
         $img_name = hexdec(uniqid()) . "." . $image->getClientOriginalExtension();
         $request->image->move(public_path('upload'), $img_name);
         $img_url = 'upload/' . $img_name;
-        //In our database we are going to save the path that leads to the image
-        //not the image itself
+        // ==== Save the image url/path that leads to the image not the image itself ==== //
 
 
         DB::table('doctors')->insert([

@@ -25,9 +25,7 @@
             </div>
         </div>
             @php
-
                 $all_schedules = Illuminate\Support\Facades\DB::table('doc_schedules')->where('doc_id', $doctor->id)->get();
-
             @endphp
             <table class="table table-striped mt-4" >
                 <tr>
