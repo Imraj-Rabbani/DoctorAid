@@ -51,7 +51,6 @@
 }
 
 .without-menu{
-    /* border: 2px solid black; */
     overflow-x: hidden;
     transition: 0.3s;
     width: 220px;
