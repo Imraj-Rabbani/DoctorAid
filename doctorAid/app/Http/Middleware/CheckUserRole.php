@@ -17,23 +17,19 @@ class CheckUserRole
     public function handle(Request $request, Closure $next): Response
     {
         {
-            // Check if the user is authenticated
+
             if (!Auth::check()) {
-                return redirect('/login'); // or your login route
+                return redirect('/login');
             }
     
-            // Get the user role
-            $role = Auth::user()->role; // assuming 'role' is the column name in your users table
+            $role = Auth::user()->role; 
     
-            // Allow admin users, redirect regular users
+
             if ($role == 'admin') {
                 return $next($request);
-            } else if ($role == 'user') {
-                return redirect('/homepage'); // or wherever you want to redirect regular users
+            } else {
+                return redirect()->route('homepage')->with('message','User access denied');
             }
-    
-            // Optional: handle other cases, like if the role is neither user nor admin
-            return redirect('/login'); // or an appropriate route
         }
     }
 }
