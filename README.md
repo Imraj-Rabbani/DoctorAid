@@ -7,5 +7,5 @@ ___
 <br>
 For database I will be using **MySQL**.
 <br>
-##Features
+## Features
 Patients can book an appointment with a doctor in just a click depending upon the availability of the seats. Not only this, patients can also check the feedbacks left by the doctor's previous patient. 
